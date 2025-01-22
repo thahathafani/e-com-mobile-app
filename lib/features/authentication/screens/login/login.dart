@@ -4,7 +4,7 @@ import 'package:mobapp/features/authentication/screens/login/widgets/widgets_log
 import 'package:mobapp/features/authentication/screens/login/widgets/widgets_login/login_header.dart';
 import 'package:mobapp/utils/constants/sizes.dart';
 import 'package:mobapp/utils/constants/text_strings.dart';
-import 'package:mobapp/utils/helpers/helper_functions.dart';
+//import 'package:mobapp/utils/helpers/helper_functions.dart';
 
 import '../../../../common/styles/spacing_styles.dart';
 import '../../../../common/widgets/form_divider.dart';
@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
+    //final dark = THelperFunctions.isDarkMode(context);
 
     return Scaffold(
       body: SingleChildScrollView(
