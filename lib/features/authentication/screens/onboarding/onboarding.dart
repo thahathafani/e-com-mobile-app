@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mobapp/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
+import'package:mobapp/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
 import 'package:mobapp/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
+import 'package:mobapp/utils/constants/colors.dart';
 import 'package:mobapp/utils/constants/image_strings.dart';
 import 'package:mobapp/utils/constants/sizes.dart';
 import 'package:mobapp/utils/constants/text_strings.dart';
 import 'package:mobapp/utils/helpers/helper_functions.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../utils/device/device_utility.dart';
 
@@ -39,9 +41,32 @@ class OnBoardingScreen extends StatelessWidget {
           const OnBoardingSkip(),
 
           /// Dot Navigation Smooth Page Indicator
+          const OnBoardingDotNavigation()
+
         ],
       ),
     );
-  } 
+  }
 }
+
+class OnBoardingDotNavigation extends StatelessWidget {
+  const OnBoardingDotNavigation({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
+    return Positioned(
+      bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
+      left: TSizes.defaultSpace,
+      child: SmoothPageIndicator(
+        controller: PageController(),
+        count: 3,
+        effect: ExpandingDotsEffect(activeDotColor: dark ? TColors.light: TColors.dark, dotWidth: 8, dotHeight: 8),
+      ),
+    );
+  }
+}
+
 
