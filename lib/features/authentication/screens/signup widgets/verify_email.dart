@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:t_store/features/authentication/screens/Login/Login.dart';
+import 'package:mobapp/features/authentication/screens/Login/Login.dart';
+import '../../../../common/widgets/success_screen/email_success_screen.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
-import '../login/login.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key});
@@ -22,59 +22,61 @@ class VerifyEmailScreen extends StatelessWidget {
           )
         ],
       ),
-      body: const SingleChildScrollView(
-        // Padding to give default equal space on all sides in all screens
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               /// Image
               Image(
-                image: AssetImage(TImages.deliveredEmailIllustration),
+                image: const AssetImage(TImages.deliveredEmailIllustration),
                 width: THelperFunctions.screenWidth() * 0.6,
               ),
-              SizedBox(height: TSizes.spaceBtwSections),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// Title & SubTitle
-              Text(
+              const Text(
                 TTexts.confirmEmail,
-                style: TextStyle(fontSize: 20), // Replace with actual style if using Theme.of(context)
+                style: TextStyle(fontSize: 20),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: TSizes.spaceBtwItems),
-              Text(
+              const SizedBox(height: TSizes.spaceBtwItems),
+              const Text(
                 'support@codingwitht.com',
-                style: TextStyle(fontSize: 16), // Replace with actual style
+                style: TextStyle(fontSize: 16),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: TSizes.spaceBtwItems),
-              Text(
+              const SizedBox(height: TSizes.spaceBtwItems),
+              const Text(
                 TTexts.confirmEmailSubTitle,
-                style: TextStyle(fontSize: 14), // Replace with actual style
+                style: TextStyle(fontSize: 14),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: TSizes.spaceBtwSections),
+              const SizedBox(height: TSizes.spaceBtwSections),
 
               /// Buttons
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(
-                        () => SuccessScreen(
-                      image: TImages.staticSuccessIllustration,
-                      title: TTexts.yourAccountCreatedTitle,
-                      subTitle: TTexts.yourAccountCreatedSubTitle,
-                      onPressed: () => Get.to(() => const LoginScreen()),
-                    ),
-                  ),
+                  onPressed: () => Get.to(() => SuccessScreen(
+                    image: TImages.staticSuccessIllustration,
+                    title: TTexts.yourAccountCreatedTitle,
+                    subTitle: TTexts.yourAccountCreatedSubTitle,
+                    onPressed: () => Get.to(() => const LoginScreen()),
+                  )),
                   child: const Text(TTexts.tContinue),
                 ),
               ),
-              SizedBox(height: TSizes.spaceBtwItems),
+              const SizedBox(height: TSizes.spaceBtwItems),
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () => Get.to(() => const SuccessScreen()),
+                  onPressed: () => Get.to(() => SuccessScreen(
+                    image: TImages.staticSuccessIllustration,
+                    title: "Success",
+                    subTitle: "Your action was successful.",
+                    onPressed: () => Get.back(),
+                  )),
                   child: const Text(TTexts.resendEmail),
                 ),
               ),

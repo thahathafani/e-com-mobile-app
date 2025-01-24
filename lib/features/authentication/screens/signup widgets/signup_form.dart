@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:mobapp/features/authentication/screens/signup%20widgets/terms_and_condition_checkbox.dart';
+import 'package:mobapp/features/authentication/screens/signup%20widgets/verify_email.dart';
 
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
