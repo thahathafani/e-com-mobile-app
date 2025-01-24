@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:mobapp/features/authentication/screens/signup%20widgets/signup.dart';
 
+import '../../../../../../navigation_manu.dart';
 import '../../../../../../utils/constants/sizes.dart';
 import '../../../../../../utils/constants/text_strings.dart';
 import '../../../password/forget_password.dart';
@@ -76,7 +77,7 @@ class TLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.to(() => const ForgetPassword()),
+                onPressed: () => Get.to(() => const NavigationMenu()),
 
                 child: const Text(TTexts.signIn),
               ),
