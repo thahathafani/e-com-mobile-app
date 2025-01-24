@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:mobapp/features/authentication/screens/signup%20widgets/signup.dart';
 
 import '../../../../../../utils/constants/sizes.dart';
 import '../../../../../../utils/constants/text_strings.dart';
+import '../../../password/forget_password.dart';
 
 class TLoginForm extends StatelessWidget {
   const TLoginForm({
@@ -48,7 +48,7 @@ class TLoginForm extends StatelessWidget {
                   children: [
                     StatefulBuilder(
                       builder: (context, setState) {
-                        bool isChecked = false;
+                        bool isChecked = true;
                         return Checkbox(
                           value: isChecked,
                           onChanged: (value) {
@@ -65,7 +65,7 @@ class TLoginForm extends StatelessWidget {
 
                 /// Forget Password
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.off(() => const ForgetPassword()),
                   child: const Text(TTexts.forgetPassword),
                 ),
               ],
@@ -76,7 +76,8 @@ class TLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => const ForgetPassword()),
+
                 child: const Text(TTexts.signIn),
               ),
             ),
