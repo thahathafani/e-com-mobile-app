@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:mobapp/utils/constants/colors.dart';
 import 'package:mobapp/utils/helpers/helper_functions.dart';
 
-import 'features/shop/screens/home/widgets/home.dart'; // Make sure you have the iconsax package added in your pubspec.yaml
+import 'features/shop/screens/home/home.dart'; // Make sure you have the iconsax package added in your pubspec.yaml
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
