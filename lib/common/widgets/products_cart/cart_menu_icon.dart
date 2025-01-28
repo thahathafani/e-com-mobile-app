@@ -22,20 +22,20 @@ class TCartCounterIcon extends StatelessWidget {
           icon: Icon(Iconsax.shopping_bag, color: iconColor),
         ),
         Positioned(
-          right: 8,
+          right: 0,
           child: Container(
             width: 18,
             height: 18,
             decoration: BoxDecoration(
               color: TColors.black,
-              borderRadius: BorderRadius.circular(180),
+              borderRadius: BorderRadius.circular(100),
             ), // BoxDecoration
             child: Center(
               child: Text(
-                '12', // Add as a string value
+                '2', // Add as a string value
                 style: Theme.of(context).textTheme.labelLarge!.apply(
                   color: TColors.white,
-                  fontSizeFactor: 8.8,
+                  fontSizeFactor: 0.8,
                 ),
               ), // Text
             ), // Center

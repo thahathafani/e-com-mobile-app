@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../utils/constants/colors.dart';
 
 class TCircularContainer extends StatelessWidget {
   const TCircularContainer({
@@ -7,10 +6,9 @@ class TCircularContainer extends StatelessWidget {
     this.child,
     this.width = 400,
     this.height = 400,
-    this.margin,
-    this.radius = 40,
+    this.radius = 400,
     this.padding = 0,
-    this.backgroundColor = TColors.white,
+    this.backgroundColor = Colors.black,
   });
 
   final double? width;
@@ -18,7 +16,6 @@ class TCircularContainer extends StatelessWidget {
   final double radius;
   final double padding;
   final Widget? child;
-  final EdgeInsets? margin;
   final Color backgroundColor;
 
   @override
@@ -26,13 +23,12 @@ class TCircularContainer extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      margin: margin,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
         color: backgroundColor,
-      ), // BoxDecoration
+      ),
       child: child,
-    ); // Container
+    );
   }
 }
