@@ -4,11 +4,10 @@ import 'package:mobapp/features/authentication/screens/login/widgets/widgets_log
 import 'package:mobapp/features/authentication/screens/login/widgets/widgets_login/login_header.dart';
 import 'package:mobapp/utils/constants/sizes.dart';
 import 'package:mobapp/utils/constants/text_strings.dart';
-//import 'package:mobapp/utils/helpers/helper_functions.dart';
 
 import '../../../../common/styles/spacing_styles.dart';
-import '../../../../common/widgets/form_divider.dart';
-import '../../../../common/widgets/social_buttons.dart';
+import '../../../../common/widgets/login_form/form_divider.dart';
+import '../../../../common/widgets/login_form/social_buttons.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

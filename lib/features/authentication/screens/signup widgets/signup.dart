@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:mobapp/features/authentication/screens/signup%20widgets/signup_form.dart';
 import 'package:mobapp/utils/constants/text_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../../common/widgets/form_divider.dart';
-import '../../../../common/widgets/social_buttons.dart';
+import '../../../../common/widgets/login_form/form_divider.dart';
+import '../../../../common/widgets/login_form/social_buttons.dart';
 import '../login/login.dart';
 
 class SignupScreen extends StatelessWidget {
