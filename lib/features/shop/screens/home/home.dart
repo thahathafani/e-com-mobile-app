@@ -61,7 +61,9 @@ class HomeScreen extends StatelessWidget {
                       banners: [TImages.promoBanner1, TImages.promoBanner2, TImages.promoBanner3,]
                   ),
                   SizedBox(height: TSizes.spaceBtwSections / 2),
-                  TProductCardVertical(),
+                    /// Popular Products 
+                    /// TGridLayout(itemCount: 2, itemBuilder: (_, index) => const TProductCardVertical())
+                  //TProductCardVertical(),
                 ],
               )
             ), // Padding
