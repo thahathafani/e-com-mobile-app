@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobapp/features/shop/screens/home/widgets/home_appbar.dart';
 
-import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/container/primary_header_container.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,7 +15,12 @@ class HomeScreen extends StatelessWidget {
             TPrimaryHeaderContainer(
               child: Column(
                 children: [
-                TAppBar(),
+
+              /// AppBar Home
+                THomeAppbar(),
+
+                  /// AppBar Home
+
                 ],
               ),
             ),
