@@ -37,15 +37,17 @@ class TPromoSlider extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 for (int i = 0; i < banners.length; i++)
-                  TCircularContainer(
-                    width: 20,
-                    height: 4,
+                  Container(
                     margin: const EdgeInsets.only(right: 10),
-                    backgroundColor:
-                    controller.carouselCurrentIndex.value == i
-                        ? TColors.primary
-                        : TColors.grey,
-                  ), // TCircularContainer
+                    child: TCircularContainer(
+                      width: 20,
+                      height: 4,
+                      backgroundColor:
+                      controller.carouselCurrentIndex.value == i
+                          ? TColors.primary
+                          : TColors.grey,
+                    ), // TCircularContainer
+                  ), // Container
               ],
             ),
           ),
