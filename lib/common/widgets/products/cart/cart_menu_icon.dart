@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../utils/constants/colors.dart'; // Corrected import path
+import '../../../../utils/constants/colors.dart'; // Corrected import path
 
 class TCartCounterIcon extends StatelessWidget {
   const TCartCounterIcon({

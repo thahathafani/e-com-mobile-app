@@ -5,6 +5,7 @@ import 'package:mobapp/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:mobapp/features/shop/screens/home/widgets/promo_slider.dart';
 
 import '../../../../common/widgets/container/primary_header_container.dart';
+import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/seaction_heading.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -53,13 +54,16 @@ class HomeScreen extends StatelessWidget {
             /// Body Tutorial [Section #3, Video #5]
             Padding(
               padding: EdgeInsets.all(TSizes.defaultSpace),
-              child: TPromoSlider(
-                banners: [
-                  TImages.promoBanner1,
-                  TImages.promoBanner2,
-                  TImages.promoBanner1, // Corrected typo from 'promoBonner' to 'promoBanner1'
+              child: Column(
+                children: [
+                  TPromoSlider(
+                    /// Home Banners
+                      banners: [TImages.promoBanner1, TImages.promoBanner2, TImages.promoBanner3,]
+                  ),
+                  SizedBox(height: TSizes.spaceBtwSections / 2),
+                  TProductCardVertical(),
                 ],
-              ), // TPromoSlider
+              )
             ), // Padding
           ],
         ),
