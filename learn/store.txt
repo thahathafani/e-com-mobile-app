@@ -6,114 +6,69 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(  // Fixed incorrect TAppBar usage
+      appBar: AppBar( // Fixed incorrect TAppBar usage
         title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
         actions: [
           IconButton(
-            icon: Icon(Icons.shopping_cart), 
+            icon: const Icon(Icons.shopping_cart), 
             onPressed: () {},
           ),
         ],
       ),
+
       body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) { // Fixed parameter syntax
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) { // Fixed missing parameters
           return [
             SliverAppBar(
-              automaticallyImplyLeading: false,
               pinned: true,
               floating: true,
-              backgroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
-              expandedHeight: 448,
+              expandedHeight: 440, // Space between AppBar and TabBar
+              automaticallyImplyLeading: false,
+              backgroundColor: THelperFunctions.isDarkMode(context) ? TColors.black : TColors.white, // Fixed `block` typo
+              
               flexibleSpace: Padding(
-                padding: EdgeInsets.all(16.0), // Replaced TSizes.defaultSpace
+                padding: const EdgeInsets.all(TSizes.defaultSpace), // Fixed incorrect period
                 child: ListView(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  children: const [
-                    SizedBox(height: 10.0), // TSizes.spaceBtItems replaced
-                    TSearchContainer(text: 'Search in Store', showBorder: true),
-                    SizedBox(height: 20.0), // TSizes.spaceBtwSections replaced
+                  children: [
+                    /// Search bar
+                    const SizedBox(height: TSizes.spaceBtwItems), // Fixed typo `spaceStwItems`
+                    
+                    const TSearchContainer(
+                      text: 'Search in Store', 
+                      showBorder: true, 
+                      showBackground: false, // Fixed incorrect capitalization `showbackground`
+                      padding: EdgeInsets.zero,
+                    ), 
+
+                    const SizedBox(height: TSizes.spaceBtwSections),
+
+                    /// Featured Brands
+                    TSectionHeading(
+                      title: 'Featured Brands', 
+                      onPressed: () {}, // Fixed missing curly braces
+                    ),
+
+                    const SizedBox(height: TSizes.spaceBtwItems / 1.5),
+
+                    /// Brands GRID
+                    TGridLayout(
+                      itemCount: 4, // Fixed period typo
+                      mainAxisExtent: 80,
+                      itemBuilder: (context, index) { // Fixed missing parameter 'context'
+                        // In the Backend Tutorial, we will pass Each Brand & onPress Event also.
+                        return const TBrandCard(showBorder: false);
+                      },
+                    ), // TGridLayout
                   ],
                 ),
-              ),
-            ),
+              ), // Padding
+            ), // SliverAppBar
           ];
         },
-        body: Column(
-          children: [
-            const SizedBox(height: 20.0),  // Fixed duplicate SizedBox
-            TSectionHeading(title: 'Featured Brands', onPressed: () {}),
-            const SizedBox(height: 10.0), // Fixed extra duplicate section heading
-            TRoundedContainer(
-              padding: const EdgeInsets.all(8.0), // TSizes.sm replaced
-              showBorder: true,
-              backgroundColor: Colors.transparent,
-              child: Row(
-                children: [
-                  Container(
-                    width: 56,
-                    height: 56,
-                    padding: const EdgeInsets.all(8.0), // TSizes.sm replaced
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white,
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    child: Image.asset('assets/icons/cloth.png', color: Colors.black),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            Expanded(
-              child: GridView.builder(
-                itemCount: 4,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 4.0,
-                ),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {},
-                    child: TRoundedContainer(
-                      padding: const EdgeInsets.all(8.0),
-                      showBorder: true,
-                      backgroundColor: Colors.transparent,
-                      child: Row(
-                        children: [
-                          Flexible(
-                            child: CircleAvatar(
-                              backgroundImage: AssetImage('assets/icons/cloth.png'),
-                              backgroundColor: Colors.transparent,
-                            ),
-                          ),
-                          const SizedBox(width: 8.0),
-                          Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Nike',
-                                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  '256 products available',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+        body: Container(), // Added `body` to NestedScrollView to avoid errors
+      ), // NestedScrollView
+    ); // Scaffold
   }
 }
