@@ -27,6 +27,7 @@ class TProductCardVertical extends StatelessWidget {
       ),
       child: Column(
         children: [
+
           /// Thumbnail, Wishlist Button, Discount Tag
           TRoundedContainer(
             height: 180,
@@ -34,9 +35,10 @@ class TProductCardVertical extends StatelessWidget {
             backgroundColor: dark ? TColors.dark : TColors.light,
             child: Stack(
               children: [
+
                 /// -- Thumbnail Image
                 const TRoundedImage(
-                  imageUrl: 'assets/images/products/NikeAirMax.png', // Replace with your image path
+                  imageUrl: 'assets/images/products/nike-shoes.png', // Replace with your image path
                   applyImageRadius: true,
                 ),
 
@@ -66,6 +68,10 @@ class TProductCardVertical extends StatelessWidget {
 
           const SizedBox(height: TSizes.spaceBtwItems / 2),
 
+          // To don't have any change in alignment of the box due to multi lines in the codes
+
+          const Spacer(),
+
           /// -- Details
           Padding(
             padding: const EdgeInsets.only(left: TSizes.sm),
@@ -94,6 +100,7 @@ class TProductCardVertical extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+
               /// -- Price
               Text(
                 '\$35.5',

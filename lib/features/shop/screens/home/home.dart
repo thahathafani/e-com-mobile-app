@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobapp/common/widgets/custom_shapes/search_container.dart';
+import 'package:mobapp/common/widgets/layout/grid_layout.dart';
 import 'package:mobapp/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:mobapp/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:mobapp/features/shop/screens/home/widgets/promo_slider.dart';
@@ -15,11 +16,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
 
@@ -28,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(height: TSizes.spaceBtwSections,),
 
                   /// Search Bar
-                    TSearchContainer(text: "Search"),
+                    TSearchContainer(text: "Search..."),
                     SizedBox(height: TSizes.spaceBtwSections,),
 
                   /// Categories Tutorial [Section 3, Video #4]
@@ -36,6 +37,7 @@ class HomeScreen extends StatelessWidget {
                     padding: EdgeInsets.only(left: TSizes.defaultSpace),
                     child: Column(
                       children: [
+
                         /// Heading
                         TSectionHeading(
                           title: "Popular Categories",
@@ -43,6 +45,7 @@ class HomeScreen extends StatelessWidget {
                           textColor: Colors.white,
                         ),
                         SizedBox(height: TSizes.spaceBtwItems),
+
                         /// Categories
                         THomeCategories(),
                       ],
@@ -51,17 +54,25 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+
             /// Body Tutorial [Section #3, Video #5]
             Padding(
-              padding: EdgeInsets.all(TSizes.defaultSpace),
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  TPromoSlider(
-                    /// Home Banners
-                      banners: [TImages.promoBanner1, TImages.promoBanner2, TImages.promoBanner3,]
-                  ),
-                  SizedBox(height: TSizes.spaceBtwSections / 2),
-                  TProductCardVertical(),
+
+                  /// Home Banners
+                  const TPromoSlider(banners: [TImages.promoBanner1, TImages.promoBanner2, TImages.promoBanner3,]),
+                  const SizedBox(height: TSizes.spaceBtwSections / 2),
+
+                  /// Popular Products Section
+
+                    /// Section Heading
+                    TSectionHeading(title: "Popular Products", onPressed: (){}),
+                    const SizedBox(height: TSizes.spaceBtwItems),
+
+                    /// Popular Products Items
+                    TGridLayout(itemCount: 6, itemBuilder: (_, index) => const TProductCardVertical())
                 ],
               )
             ), // Padding
