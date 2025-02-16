@@ -39,11 +39,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
 
                         /// Heading
-                        TSectionHeading(
-                          title: "Popular Categories",
-                          showActionButton: false,
-                          textColor: Colors.white,
-                        ),
+                        TSectionHeading(title: "Popular Categories", showActionButton: false, textColor: Colors.white),
                         SizedBox(height: TSizes.spaceBtwItems),
 
                         /// Categories
@@ -65,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                   const TPromoSlider(banners: [TImages.promoBanner1, TImages.promoBanner2, TImages.promoBanner3,]),
                   const SizedBox(height: TSizes.spaceBtwSections / 2),
 
-                  /// Popular Products Section
+                  /// -------------------  Popular Products Section ------------------------------///
 
                     /// Section Heading
                     TSectionHeading(title: "Popular Products", onPressed: (){}),

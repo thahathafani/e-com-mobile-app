@@ -23,7 +23,7 @@ class TProductCardVertical extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [TShadowStyle.verticalProductShadow],
         borderRadius: BorderRadius.circular(TSizes.productImageRadius),
-        color: dark ? TColors.darkerGrey : TColors.white,
+        color: dark ? TColors.dark : TColors.white,
       ),
       child: Column(
         children: [
@@ -44,7 +44,7 @@ class TProductCardVertical extends StatelessWidget {
 
                 /// -- Sale Tag
                 Positioned(
-                  top: 12,
+                  top: 7,
                   child: TRoundedContainer(
                     radius: TSizes.sm,
                     backgroundColor: TColors.secondary.withOpacity(0.8),
