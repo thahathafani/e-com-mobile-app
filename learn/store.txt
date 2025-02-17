@@ -57,18 +57,37 @@ class StoreScreen extends StatelessWidget {
                       itemCount: 4, // Fixed period typo
                       mainAxisExtent: 80,
                       itemBuilder: (context, index) { // Fixed missing parameter 'context'
-                        // In the Backend Tutorial, we will pass Each Brand & onPress Event also.
                         return const TBrandCard(showBorder: false);
                       },
                     ), // TGridLayout
                   ],
                 ),
               ), // Padding
-            ), // SliverAppBar
+
+              /// Tabs Section
+              bottom: const TabBar( // Fixed incorrect TTabBar reference
+                tabs: [
+                  Tab(child: Text('Sports')),
+                  Tab(child: Text('Furniture')),
+                  Tab(child: Text('Electronics')),
+                  Tab(child: Text('Clothes')),
+                  Tab(child: Text('Cosmetics')),
+                ],
+              ),
+            ),
           ];
         },
-        body: Container(), // Added `body` to NestedScrollView to avoid errors
-      ), // NestedScrollView
-    ); // Scaffold
+        /// Body Section
+        body: const TabBarView(
+          children: [
+            TCategoryTab(), // Fixed missing commas
+            TCategoryTab(),
+            TCategoryTab(),
+            TCategoryTab(),
+            TCategoryTab(),
+          ],
+        ),
+      ),
+    );
   }
 }
