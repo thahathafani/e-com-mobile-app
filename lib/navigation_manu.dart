@@ -4,7 +4,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:mobapp/utils/constants/colors.dart';
 import 'package:mobapp/utils/helpers/helper_functions.dart';
 
-import 'features/shop/screens/home/home.dart'; // Make sure you have the iconsax package added in your pubspec.yaml
+import 'features/personilization/screens/settings/settings.dart';
+import 'features/shop/screens/home/home.dart';
+import 'features/shop/screens/store/store.dart';
+import 'features/shop/screens/wishlist/wishlist.dart'; // Make sure you have the iconsax package added in your pubspec.yaml
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -22,7 +25,7 @@ class NavigationMenu extends StatelessWidget {
           elevation: 0,
           selectedIndex: controller.selectedIndex.value,
           onDestinationSelected: (index) => controller.selectedIndex.value = index,
-          backgroundColor: darkMode ? TColors.black : Colors.white,
+          backgroundColor: darkMode ? TColors.dark : Colors.white,
           indicatorColor: darkMode ? TColors.white.withOpacity(0.3) : Colors.black.withOpacity(0.3),
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
@@ -45,9 +48,9 @@ class NavigationController extends GetxController {
   // List of screens corresponding to the navigation destinations
   final screens = [
     const HomeScreen(),
-    Container(color: Colors.purple),
-    Container(color: Colors.orange),
-    Container(color: Colors.blue),
+    const StoreScreen(),
+    const Wishlist(),
+    const SettingsScreen(),
   ];
 }
 
