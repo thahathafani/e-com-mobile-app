@@ -1,0 +1,93 @@
+import 'package:flutter/material.dart';
+
+class StoreScreen extends StatelessWidget {
+  const StoreScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar( // Fixed incorrect TAppBar usage
+        title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart), 
+            onPressed: () {},
+          ),
+        ],
+      ),
+
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) { // Fixed missing parameters
+          return [
+            SliverAppBar(
+              pinned: true,
+              floating: true,
+              expandedHeight: 440, // Space between AppBar and TabBar
+              automaticallyImplyLeading: false,
+              backgroundColor: THelperFunctions.isDarkMode(context) ? TColors.black : TColors.white, // Fixed `block` typo
+              
+              flexibleSpace: Padding(
+                padding: const EdgeInsets.all(TSizes.defaultSpace), // Fixed incorrect period
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    /// Search bar
+                    const SizedBox(height: TSizes.spaceBtwItems), // Fixed typo `spaceStwItems`
+                    
+                    const TSearchContainer(
+                      text: 'Search in Store', 
+                      showBorder: true, 
+                      showBackground: false, // Fixed incorrect capitalization `showbackground`
+                      padding: EdgeInsets.zero,
+                    ), 
+
+                    const SizedBox(height: TSizes.spaceBtwSections),
+
+                    /// Featured Brands
+                    TSectionHeading(
+                      title: 'Featured Brands', 
+                      onPressed: () {}, // Fixed missing curly braces
+                    ),
+
+                    const SizedBox(height: TSizes.spaceBtwItems / 1.5),
+
+                    /// Brands GRID
+                    TGridLayout(
+                      itemCount: 4, // Fixed period typo
+                      mainAxisExtent: 80,
+                      itemBuilder: (context, index) { // Fixed missing parameter 'context'
+                        return const TBrandCard(showBorder: false);
+                      },
+                    ), // TGridLayout
+                  ],
+                ),
+              ), // Padding
+
+              /// Tabs Section
+              bottom: const TabBar( // Fixed incorrect TTabBar reference
+                tabs: [
+                  Tab(child: Text('Sports')),
+                  Tab(child: Text('Furniture')),
+                  Tab(child: Text('Electronics')),
+                  Tab(child: Text('Clothes')),
+                  Tab(child: Text('Cosmetics')),
+                ],
+              ),
+            ),
+          ];
+        },
+        /// Body Section
+        body: const TabBarView(
+          children: [
+            TCategoryTab(), // Fixed missing commas
+            TCategoryTab(),
+            TCategoryTab(),
+            TCategoryTab(),
+            TCategoryTab(),
+          ],
+        ),
+      ),
+    );
+  }
+}
