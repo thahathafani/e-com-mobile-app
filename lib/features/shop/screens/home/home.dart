@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(height: TSizes.spaceBtwSections,),
 
                   /// Search Bar
-                    TSearchContainer(text: "Search..."),
+                    TSearchContainer(text: "Search...", showBorder: true,),
                     SizedBox(height: TSizes.spaceBtwSections,),
 
                   /// Categories Tutorial [Section 3, Video #4]
@@ -47,6 +47,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ), // Column
                   ),
+                  SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
             ),
