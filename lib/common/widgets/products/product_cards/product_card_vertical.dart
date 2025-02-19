@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:mobapp/common/widgets/texts/brand_title_text_verified_icon.dart';
 import 'package:mobapp/utils/constants/colors.dart';
 import 'package:mobapp/utils/constants/sizes.dart';
 import 'package:mobapp/utils/helpers/helper_functions.dart';
@@ -17,116 +18,109 @@ class TProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
 
-    return Container(
-      width: 180,
-      padding: const EdgeInsets.all(TSizes.sm),
-      decoration: BoxDecoration(
-        boxShadow: [TShadowStyle.verticalProductShadow],
-        borderRadius: BorderRadius.circular(TSizes.productImageRadius),
-        color: dark ? TColors.dark : TColors.white,
-      ),
-      child: Column(
-        children: [
+    return GestureDetector(
+      onTap: (){},
+      child: Container(
+        width: 180,
+        ///padding: const EdgeInsets.all(TSizes.sm),
+        decoration: BoxDecoration(
+          boxShadow: [TShadowStyle.verticalProductShadow],
+          borderRadius: BorderRadius.circular(TSizes.productImageRadius),
+          color: dark ? TColors.dark : TColors.white,
+        ),
+        child: Column(
+          children: [
 
-          /// Thumbnail, Wishlist Button, Discount Tag
-          TRoundedContainer(
-            height: 180,
-            padding: const EdgeInsets.all(TSizes.sm),
-            backgroundColor: dark ? TColors.dark : TColors.light,
-            child: Stack(
+            /// Thumbnail, Wishlist Button, Discount Tag
+            TRoundedContainer(
+              height: 160,
+              padding: const EdgeInsets.all(TSizes.sm),
+              backgroundColor: dark ? TColors.dark : TColors.light,
+              child: Stack(
+                children: [
+
+                  /// -- Thumbnail Image
+                  const TRoundedImage(
+                    imageUrl: 'assets/images/products/nike-shoes.png', // Replace with your image path
+                    applyImageRadius: true,
+                  ),
+
+                  /// -- Sale Tag
+                  Positioned(
+                    top: 12,
+                    child: TRoundedContainer(
+                      radius: TSizes.sm,
+                      backgroundColor: TColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
+                      child: Text('25%',
+                        style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),
+                      ),
+                    ),
+                  ),
+
+                  /// -- Favourite Icon Button
+                  const Positioned(
+                    top: 2,
+                    right: 2,
+                    child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: TSizes.spaceBtwItems),
+
+            // To don't have any change in alignment of the box due to multi lines in the codes
+
+            /// -- Details
+            const Padding(
+              padding: EdgeInsets.all(TSizes.sm),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TProductTitleText(title: 'Green Nike Air Shoes', smallSize: true),
+                  SizedBox(height: TSizes.spaceBtwItems / 4),
+                  TBrandTitleWithVerifiedIcon(title: 'Nike'),
+                ],
+              ),
+            ),
+
+            const Spacer(),
+            /// -- Price and Add Button
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
 
-                /// -- Thumbnail Image
-                const TRoundedImage(
-                  imageUrl: 'assets/images/products/nike-shoes.png', // Replace with your image path
-                  applyImageRadius: true,
-                ),
-
-                /// -- Sale Tag
-                Positioned(
-                  top: 7,
-                  child: TRoundedContainer(
-                    radius: TSizes.sm,
-                    backgroundColor: TColors.secondary.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
-                    child: Text(
-                      '25%',
-                      style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),
-                    ),
+                /// -- Price
+                Padding(
+                  padding: const EdgeInsets.only(left: TSizes.md),
+                  child: Text(
+                    '\$35.5',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
 
-                /// -- Favourite Icon Button
-                const Positioned(
-                  top: 6,
-                  right: 9,
-                  child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
-                ),
-              ],
-            ),
-          ),
-
-          const SizedBox(height: TSizes.spaceBtwItems / 2),
-
-          // To don't have any change in alignment of the box due to multi lines in the codes
-
-          const Spacer(),
-
-          /// -- Details
-          Padding(
-            padding: const EdgeInsets.only(left: TSizes.sm),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const TProductTitleText(title: 'Green Nike Air Shoes', smallSize: true),
-                const SizedBox(height: TSizes.spaceBtwItems / 2),
-                Row(
-                  children: [
-                    Text(
-                      'Nike',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: Theme.of(context).textTheme.labelMedium,
+                /// -- Add Button
+                Container(
+                  decoration: const BoxDecoration(
+                    color: TColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(TSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(TSizes.productImageRadius),
                     ),
-                    const SizedBox(width: TSizes.xs),
-                    const Icon(Iconsax.verify5, color: TColors.primary, size: TSizes.iconXs),
-                  ],
-                ),
-              ],
-            ),
-          ),
-
-          /// -- Price and Add Button
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-
-              /// -- Price
-              Text(
-                '\$35.5',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-
-              /// -- Add Button
-              Container(
-                decoration: const BoxDecoration(
-                  color: TColors.dark,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(TSizes.cardRadiusMd),
-                    bottomRight: Radius.circular(TSizes.productImageRadius),
+                  ),
+                  child: const SizedBox(
+                    width: TSizes.iconLg * 1.2,
+                    height: TSizes.iconLg * 1.2,
+                    child: Center(child: Icon(Iconsax.add, color: TColors.white)),
                   ),
                 ),
-                child: const SizedBox(
-                  width: TSizes.iconLg * 1.2,
-                  height: TSizes.iconLg * 1.2,
-                  child: Center(child: Icon(Iconsax.add, color: TColors.white)),
-                ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

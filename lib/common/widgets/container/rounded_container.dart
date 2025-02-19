@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -15,7 +13,7 @@ class TRoundedContainer extends StatelessWidget {
     this.padding,
     this.showBorder = false,
     this.radius = TSizes.cardRadiusLg,
-    this.backgroundColor = TColors.white,
+    this.backgroundColor = TColors.grey,
     this.borderColor = TColors.borderPrimary,
   });
 
@@ -25,7 +23,7 @@ class TRoundedContainer extends StatelessWidget {
   final Widget? child;
   final bool showBorder;
   final Color borderColor;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
 
